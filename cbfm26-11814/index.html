@@ -32,6 +32,18 @@ h2{font-size:1em;text-transform:uppercase;letter-spacing:.08em;color:var(--muted
 a{color:var(--blue)}
 .contact a{word-break:break-all}
 footer{border-top:1px solid var(--line);margin-top:32px;padding:20px 0 40px;font-size:.82em;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:18px}
+.stat{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--blue);border-radius:10px;padding:14px 16px}
+.stat .n{font-size:1.6em;font-weight:bold;color:var(--blue);line-height:1.2}
+.stat .l{font-size:.85em;color:var(--muted);margin-top:4px}
+.flow{list-style:none;padding:0;margin:10px 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow li{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:.88em}
+.flow li:not(:last-child)::after{content:"→";margin-left:10px;color:var(--muted)}
+.st{font-weight:bold;letter-spacing:.04em}
+.st.p{color:var(--muted)} .st.s{color:var(--blue)} .st.r{color:var(--teal)}
+.bar{background:var(--line);border-radius:6px;height:12px;overflow:hidden;margin:4px 0 12px}
+.bar span{display:block;height:100%;background:var(--blue)}
+.bar.t span{background:var(--teal)} 
 </style>
 </head>
 <body>
@@ -59,6 +71,46 @@ footer{border-top:1px solid var(--line);margin-top:32px;padding:20px 0 40px;font
   This page is maintained by Renan M. H. Sakaguchi.</p>
  </div>
 
+  <h2>At a glance</h2>
+ <div class="stats">
+  <div class="stat"><div class="n">8</div><div class="l">Consecutive monitoring cycles (Jan–Aug 2026)</div></div>
+  <div class="stat"><div class="n">2,626</div><div class="l">Eligible personal records</div></div>
+  <div class="stat"><div class="n">731 (27.84%)</div><div class="l">Records with acknowledgment timestamps</div></div>
+  <div class="stat"><div class="n">&lt;5 min</div><div class="l">per cycle — processing and notification</div></div>
+ </div>
+
+ <h2>How it works</h2>
+ <div class="box">
+  <strong>Stage 1 — Data processing and triage</strong>
+  <ol class="flow">
+   <li>Monthly spreadsheets</li><li>Standardization</li><li>Area monitors routed to designated staff</li>
+   <li>Records without valid email flagged</li><li>Dose classification</li><li>Unique identifier assigned</li>
+   <li><span class="st p">PENDING</span></li>
+  </ol>
+  <p class="muted">Activation by the medical physicist</p>
+  <strong>Stage 2 — Notification and acknowledgment tracking</strong>
+  <ol class="flow">
+   <li>Individualized HTML notification</li><li><span class="st s">SENT</span></li><li>One-click confirmation</li>
+   <li><span class="st r">READ</span></li><li>Timestamp generated</li><li>Centralized acknowledgment tracking</li>
+  </ol>
+  <p class="muted" style="margin-bottom:0">READ: internal status after one-click confirmation. Duplicate-prevention logic avoided repeated notifications.</p>
+ </div>
+
+ <h2>Record funnel</h2>
+ <div class="box">
+  3,449 total dose records
+  <div class="bar"><span style="width:100%"></span></div>
+  <span class="muted">−520 environmental/area monitors · −303 personal records without email</span><br>
+  2,626 eligible personal records
+  <div class="bar"><span style="width:76.14%"></span></div>
+  <strong>Acknowledgment status of the 2,626 eligible personal records</strong><br>
+  731 (27.84%) — records with acknowledgment timestamps
+  <div class="bar t"><span style="width:27.84%"></span></div>
+  1,895 (72.16%) — pending records
+  <p class="muted" style="margin-bottom:0">Unit: dose records, not individuals. Investigation-level records (28; chest ≥ 1.0 mSv, wrist ≥ 20 mSv per month, ANSN 3.01) are counted separately and are not part of the funnel.</p>
+ </div>
+
+ 
  <h2>Code &amp; documentation</h2>
  <div class="box"><span class="muted">Sanitized code and documentation: coming soon.</span></div>
 
